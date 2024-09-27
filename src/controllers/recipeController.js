@@ -49,7 +49,6 @@ const RecipeController = {
         .json({ message: 'Erreur lors de la mise à jour de la recette' });
     }
   },
-
   async deleteRecipe(req, res) {
     const { id } = req.params;
     try {
