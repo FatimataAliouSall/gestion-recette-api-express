@@ -6,7 +6,7 @@ import {
   deleteRequestValidator,
   getByIdRequestValidator,
   updateRequestValidator,
-} from '../validators/RecipeValidat.js';
+} from '../validators/RecipeValidat.js ';
 
 const router = express.Router();
 
@@ -22,6 +22,7 @@ router.put(
   updateRequestValidator,
   RecipeController.updateRecipe
 );
+
 router.delete(
   '/recipes/delete/:id',
   deleteRequestValidator,

@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import RecipeRoutes from './src/routes/RecipeRoutes.js';
+import RecipeRoutes from './src/routes/RecipeRoutes.js ';
 
 dotenv.config();
 const app = express();
