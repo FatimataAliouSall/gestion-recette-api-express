@@ -2,7 +2,6 @@ import { check, param, validationResult } from 'express-validator';
 import { StatusCodes } from 'http-status-codes';
 import Recipe from '../models/RecipeModel.js ';
 
-
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -75,12 +74,12 @@ const updateRequestValidator = [
     .not()
     .isEmpty()
     .withMessage('Les ingrédients sont requis.'),
-  // check('description')
-  //   .optional()
-  //   .not()
-  //   .isEmpty()
-  //   .withMessage('La description est requise.'),
-  // handleValidationErrors,
+  check('description')
+    .optional()
+    .not()
+    .isEmpty()
+    .withMessage('La description est requise.'),
+  handleValidationErrors,
 ];
 
 const getByIdRequestValidator = [

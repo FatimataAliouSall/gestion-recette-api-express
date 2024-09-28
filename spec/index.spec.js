@@ -6,11 +6,13 @@ describe('Recipe tests', () => {
     const recipe = {
       title: 'crepe',
       type: 'dessert',
+      description: 'pâte à base de farine',
       ingredient: 'farine',
     };
     const result = await Recipe.create(
       recipe.title,
       recipe.type,
+      recipe.description,
       recipe.ingredient
     );
     recipeId = result.insertId;
@@ -24,12 +26,14 @@ describe('Recipe tests', () => {
     const recipe = {
       title: null,
       type: 'dessert',
+      description: 'pâte à base de farine',
       ingredient: 'farine',
     };
     try {
       await Recipe.create(
         recipe.title,
         recipe.type,
+        recipe.description,
         recipe.ingredient
       );
       fail('Expected an error to be thrown');
@@ -41,21 +45,23 @@ describe('Recipe tests', () => {
   it('can get all recipes', async () => {
     const getAll = await Recipe.getAll();
     expect(getAll).not.toBeNull();
-    expect(Array.isArray(getAll)).toBe(true); 
+    expect(Array.isArray(getAll)).toBe(true);
   });
 
   it('can update a recipe', async () => {
     const updatedData = {
       title: 'updated crepe',
       type: 'dessert',
+      description: 'updated description',
       ingredient: 'updated ingredient',
     };
+
     const result = await Recipe.update(recipeId, updatedData);
     expect(result.affectedRows).toBe(1);
 
     const updatedRecipe = await Recipe.getById(recipeId);
-    expect(updatedRecipe.title).toBe(updatedData.title); 
-    expect(updatedRecipe.description).toBe(updatedData.description); 
+    expect(updatedRecipe.title).toBe(updatedData.title);
+    expect(updatedRecipe.description).toBe(updatedData.description);
   });
 
   it('can delete a recipe', async () => {
@@ -63,6 +69,6 @@ describe('Recipe tests', () => {
     expect(result.affectedRows).toBe(1);
 
     const deletedRecipe = await Recipe.getById(recipeId);
-    expect(deletedRecipe).toBeNull(); 
+    expect(deletedRecipe).toBeNull();
   });
 });

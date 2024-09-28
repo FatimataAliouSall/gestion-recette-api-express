@@ -1,20 +1,21 @@
 import db from '../config/db.js';
 
-
 const Recipe = {
-  create: async (title, type, ingredient) => {
+  create: async (title, type, description, ingredient) => {
     if (!title) {
       throw new Error('Title cannot be null');
     }
     const query =
-      'INSERT INTO recipes (title, type, ingredient) VALUES (?, ?, ?)';
+      'INSERT INTO recipes (title, type, description, ingredient) VALUES (?, ?, ?, ?)';
     const [result] = await db.query(query, [
       title,
       type,
+      description,
       ingredient,
     ]);
     return result;
   },
+
   checkRecipe: async (title) => {
     const [rows] = await db.query(
       'SELECT COUNT(*) as count FROM recipes WHERE title = ?',
@@ -22,7 +23,7 @@ const Recipe = {
     );
     return rows[0].count > 0;
   },
-  
+
   getById: async (id) => {
     const query = 'SELECT * FROM recipes WHERE id = ?';
     const [rows] = await db.query(query, [id]);
@@ -31,16 +32,16 @@ const Recipe = {
 
   update: async (id, updatedData) => {
     const query =
-      'UPDATE recipes SET title = ?, type = ?,  ingredient = ? WHERE id = ?';
+      'UPDATE recipes SET title = ?, type = ?, description = ?, ingredient = ? WHERE id = ?';
     const [result] = await db.query(query, [
       updatedData.title,
       updatedData.type,
+      updatedData.description,
       updatedData.ingredient,
       id,
     ]);
     return result;
   },
-
 
   delete: async (id) => {
     const query = 'DELETE FROM recipes WHERE id = ?';

@@ -88,11 +88,13 @@ L'API sera accessible à l'adresse http://localhost:3000.
 ```bash
   docker build -t votre-nom-utilisateur/nom_image-management-recipe .
 ```
-2. Tag l'image  docker :
+
+2. Tag l'image docker :
 
 ```bash
   docker tag <image-id> votre-nom-utilisateur/nom_image-management-recipe
 ```
+
 3. Tag l'image docker :
 
 ```bash
