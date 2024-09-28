@@ -1,6 +1,5 @@
 import Recipe from '../models/RecipeModel.js ';
 
-
 const RecipeController = {
   async getAllRecipes(req, res) {
     try {

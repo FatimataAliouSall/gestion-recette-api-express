@@ -28,7 +28,6 @@ const Recipe = {
     return rows.length > 0 ? rows[0] : null;
   },
 
-
   update: async (id, updatedData) => {
     const query =
       'UPDATE recipes SET title = ?, type = ?,  ingredient = ? WHERE id = ?';

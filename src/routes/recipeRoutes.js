@@ -1,6 +1,5 @@
 import express from 'express';
 import RecipeController from '../controllers/RecipeController.js ';
-
 import {
   addRequestValidator,
   deleteRequestValidator,
@@ -8,8 +7,8 @@ import {
   updateRequestValidator,
 } from '../validators/RecipeValidat.js ';
 
-const router = express.Router();
 
+const router = express.Router();
 router.get('/recipes', RecipeController.getAllRecipes);
 router.get(
   '/recipes/:id',
