@@ -47,7 +47,7 @@ Pour configurer le projet, suivez ces étapes :
     PORT=3000
 ```
 
-L'API sera accessible à l'adresse http://localhost:3000.
+L'API sera accessible à l'adresse http://localhost:3090
 
 ## Endpoints de l'API
 
