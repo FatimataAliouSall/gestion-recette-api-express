@@ -5,7 +5,6 @@ const RecipeController = {
     try {
       const recipes = await Recipe.getAll();
       res.json(recipes);
-
     } catch (error) {
       console.error('Erreur dans getAllRecipes:', error);
       res.status(500).json({ message: 'Erreur serveur' });
