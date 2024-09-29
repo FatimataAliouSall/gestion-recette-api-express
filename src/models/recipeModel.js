@@ -46,7 +46,7 @@ const Recipe = {
   delete: async (id) => {
     const query = 'DELETE FROM recipes WHERE id = ?';
     const [result] = await db.query(query, [id]);
-    return result; 
+    return result;
   },
 
   getAll: async () => {
