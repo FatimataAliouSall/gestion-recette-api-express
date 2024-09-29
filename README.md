@@ -47,7 +47,7 @@ Pour configurer le projet, suivez ces étapes :
     PORT=3000
 ```
 
-L'API sera accessible à l'adresse http://localhost:3000.
+L'API sera accessible à l'adresse http://localhost:3090
 
 ## Endpoints de l'API
 
@@ -88,11 +88,13 @@ L'API sera accessible à l'adresse http://localhost:3000.
 ```bash
   docker build -t votre-nom-utilisateur/nom_image-management-recipe .
 ```
-2. Tag l'image  docker :
+
+2. Tag l'image docker :
 
 ```bash
   docker tag <image-id> votre-nom-utilisateur/nom_image-management-recipe
 ```
+
 3. Tag l'image docker :
 
 ```bash
@@ -110,15 +112,12 @@ L'API sera accessible à l'adresse http://localhost:3000.
 ```bash
   docker-compose up -d
 ```
-
 ## Tests
-
 Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la commande :
 
 ```bash
   npm test
 ```
-
 ## Configuration de la base de données
 
 La connexion à la base de données est configurée manuellement sans utiliser d'ORM. Pour configurer la base de données, créez une base MySQL nommée gestion_recettes, puis modifiez les informations de connexion tellesques DB_HOST, DB_USER, DB_PASS, DB_NAME dans le fichier ./env .
