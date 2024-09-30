@@ -95,7 +95,6 @@ L'API sera accessible à l'adresse http://localhost:3090
   docker tag <image-id> votre-nom-utilisateur/nom_image-management-recipe
 ```
 
-
 4. Déployer l'image sur Docker Hub :
 
 ```bash
