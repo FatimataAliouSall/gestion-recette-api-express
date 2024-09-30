@@ -33,14 +33,17 @@ Pour configurer le projet, suivez ces étapes :
   npm start
 ```
 
-4. Créez un fichier .env à la racine du projet et configurez les variables d'environnement pour la connexion à la base de données :
+4. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données et docker compose :
 
 ```bash
     DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=your-password
-    DB_NAME=recipes_management
-    PORT=3000
+    DB_USER=
+    DB_PASSWORD=
+    DB_NAME=recipes_management_old
+    PORT=3090
+    DB_PORT=3306
+    MYSQL_DATABASE=recipes_management_old
+    MYSQL_ROOT_PASSWORD=
 ```
 
 L'API sera accessible à l'adresse http://localhost:3090
@@ -89,8 +92,6 @@ L'API sera accessible à l'adresse http://localhost:3090
 
 ``` 
 
-
-
 3. Mettre à jour une recette
 
 - Méthode : PUT
@@ -107,13 +108,12 @@ L'API sera accessible à l'adresse http://localhost:3090
  }
 
 ```
-- Répose :
+- Réponse :
 ```bash
 {
     "message": "Recette mise à jour avec succès"
 }
 ```
-
 
 5. Supprimer une recette.
 
@@ -135,7 +135,7 @@ Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la c
 ```bash
   npm test
 ```
-## Linting et Formatage
+## Analyse et formatage de code
 
 Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le formatage. Cela permet de garantir que le code respecte des normes de qualité et de style cohérentes.
 
@@ -148,7 +148,6 @@ npm run lint:fix
 ```bash
 npm run format
 ```
-
 
 ## Conteneurisation et déploiement.
 
@@ -175,8 +174,6 @@ npm run format
 ```bash
   docker-compose up -d
 ```
-
-
 ## Auteurs
 
 - **[Fatimata Aliou Sall](https://github.com/fatimata-sall)** - Développeuse Full Stack

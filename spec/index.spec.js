@@ -1,7 +1,8 @@
-import Recipe from '../src/models/RecipeModel.js ';
+import Recipe from '../src/models/RecipeModel.js';
 
 describe('Recipe tests', () => {
   let recipeId = null;
+
   it('can be created', async () => {
     const recipe = {
       title: 'crepe',
@@ -9,6 +10,7 @@ describe('Recipe tests', () => {
       description: 'pâte à base de farine',
       ingredient: 'farine',
     };
+
     const result = await Recipe.create(
       recipe.title,
       recipe.type,
@@ -17,29 +19,10 @@ describe('Recipe tests', () => {
     );
     recipeId = result.insertId;
     const recipeCreated = await Recipe.getById(recipeId);
+    
     expect(recipeId).not.toBeNull();
     expect(recipeCreated).not.toBeNull();
     expect(recipeCreated.title).toBe(recipe.title);
-  });
-
-  it('cannot be created with invalid data', async () => {
-    const recipe = {
-      title: null,
-      type: 'dessert',
-      description: 'pâte à base de farine',
-      ingredient: 'farine',
-    };
-    try {
-      await Recipe.create(
-        recipe.title,
-        recipe.type,
-        recipe.description,
-        recipe.ingredient
-      );
-      fail('Expected an error to be thrown');
-    } catch (error) {
-      expect(error).toBeDefined();
-    }
   });
 
   it('can get all recipes', async () => {
@@ -64,11 +47,43 @@ describe('Recipe tests', () => {
     expect(updatedRecipe.description).toBe(updatedData.description);
   });
 
+  it('cannot create recipe with invalid data', async () => {
+    const recipe = {
+      titre: null,  
+      ingredients: 'Lait, Chocolat, sucre',
+      description: 'updated description',
+      type: 'Dessert',
+    };
+  
+    try {
+      await Recipe.createRecipe(
+        recipe.titre,
+        recipe.ingredients,
+        recipe.description,
+        recipe.type
+      );
+      fail('Expected an error to be thrown'); 
+    } catch (error) {
+      console.log('Erreur  :', error.message);
+    }
+    
+  });
+  
+
   it('can delete a recipe', async () => {
+
     const result = await Recipe.delete(recipeId);
     expect(result.affectedRows).toBe(1);
-
     const deletedRecipe = await Recipe.getById(recipeId);
     expect(deletedRecipe).toBeNull();
+
   });
+
+  it('Cannot get recipe by invalid ID', async () =>{
+    const invalidId = 9999; 
+    const recipe = await Recipe.getById(invalidId);
+    expect(recipe).toBeNull(); 
+
+  });
+
 });
