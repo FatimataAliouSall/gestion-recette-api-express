@@ -40,7 +40,7 @@ const deleteRequestValidator = [
     .custom(async (value) => {
       const recipe = await Recipe.getById(value);
       if (!recipe) {
-        throw new Error('Cette recette n\'existe pas.');
+        throw new Error("Cette recette n'existe pas.");
       }
       return true;
     }),
@@ -51,12 +51,12 @@ const updateRequestValidator = [
   param('id')
     .not()
     .isEmpty()
-    .withMessage('L\'ID de la recette est requis.')
+    .withMessage("L'ID de la recette est requis.")
     .bail()
     .custom(async (value) => {
       const recipe = await Recipe.getById(value);
       if (!recipe) {
-        throw new Error('Cette recette n\'existe pas.');
+        throw new Error("Cette recette n'existe pas.");
       }
       return true;
     }),
@@ -86,12 +86,12 @@ const getByIdRequestValidator = [
   param('id')
     .not()
     .isEmpty()
-    .withMessage('L\'ID de la recette est requis.')
+    .withMessage("L'ID de la recette est requis.")
     .bail()
     .custom(async (value) => {
       const recipe = await Recipe.getById(value);
       if (!recipe) {
-        throw new Error('Cette recette n\'existe pas.');
+        throw new Error("Cette recette n'existe pas.");
       }
       return true;
     }),

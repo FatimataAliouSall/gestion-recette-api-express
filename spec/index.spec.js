@@ -19,7 +19,7 @@ describe('Recipe tests', () => {
     );
     recipeId = result.insertId;
     const recipeCreated = await Recipe.getById(recipeId);
-    
+
     expect(recipeId).not.toBeNull();
     expect(recipeCreated).not.toBeNull();
     expect(recipeCreated.title).toBe(recipe.title);
@@ -50,12 +50,12 @@ describe('Recipe tests', () => {
 
   it('cannot create recipe with invalid data', async () => {
     const recipe = {
-      titre: null,  
+      titre: null,
       ingredients: 'Lait, Chocolat, sucre',
       description: 'updated description',
       type: 'Dessert',
     };
-  
+
     try {
       await Recipe.createRecipe(
         recipe.titre,
@@ -63,27 +63,22 @@ describe('Recipe tests', () => {
         recipe.description,
         recipe.type
       );
-      fail('Expected an error to be thrown'); 
+      fail('Expected an error to be thrown');
     } catch (error) {
       console.log('Erreur  :', error.message);
     }
-    
   });
-  
-  it('can delete a recipe', async () => {
 
+  it('can delete a recipe', async () => {
     const result = await Recipe.delete(recipeId);
     expect(result.affectedRows).toBe(1);
     const deletedRecipe = await Recipe.getById(recipeId);
     expect(deletedRecipe).toBeNull();
-
   });
 
-  it('Cannot get recipe by invalid ID', async () =>{
-    const invalidId = 9999; 
+  it('Cannot get recipe by invalid ID', async () => {
+    const invalidId = 9999;
     const recipe = await Recipe.getById(invalidId);
-    expect(recipe).toBeNull(); 
-
+    expect(recipe).toBeNull();
   });
-
 });

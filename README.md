@@ -9,7 +9,6 @@ Ceci est l'API backend pour l'application de gestion de recettes, développée a
 - Postman (pour tester l'API)
 - Docker (version 20 ou supérieure)
 
-
 ## Installation
 
 Pour configurer le projet, suivez ces étapes :
@@ -50,13 +49,13 @@ L'API sera accessible à l'adresse http://localhost:3090
 
 ## Endpoints de l'API
 
-
 1. Obtenir toutes les recettes
 
 - Méthode : GET
 - Endpoint : /api/recipes
 - Description : Récupère toutes les recettes de la base de données.
 - Réponse:
+
 ```bash
  {
         "id": 1,
@@ -64,7 +63,7 @@ L'API sera accessible à l'adresse http://localhost:3090
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
         "type": "entrée",
         "description": "Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique."
-  
+
   }
 ```
 
@@ -74,23 +73,25 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /api/recipes
 - Description : Ajoute une nouvelle recette dans la base de données.
 - Corps de la requette :
-```bash  
+
+```bash
   {
    "title": "Salade  datte",
   "ingredient": "Lait, Poulet, Parmesan, Croutons, Sucre",
   "type": "dessert",
   "description": "Une salade populaire à base de poulet, parmesan, et sauce crémeuse."
-       
+
 }
 ```
 
 - Réponse :
-```bash 
+
+```bash
 {
     "message": "Recette créée avec succès"
 }
 
-``` 
+```
 
 3. Mettre à jour une recette
 
@@ -98,6 +99,7 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /api/recipes/edit/:id
 - Description : Met à jour une recette par son ID.
 - Corps :
+
 ```bash
 {
         "title": "Salade ",
@@ -107,7 +109,9 @@ L'API sera accessible à l'adresse http://localhost:3090
  }
 
 ```
+
 - Réponse :
+
 ```bash
 {
     "message": "Recette mise à jour avec succès"
@@ -119,7 +123,8 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Méthode : DELETE
 - Endpoint : /api/recipes/delete/:id
 - Description : Supprime une recette par son ID.
--Réponse :
+  -Réponse :
+
 ```bash
 {
     "message": "Recette supprimée avec succès"
@@ -134,6 +139,7 @@ Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la c
 ```bash
   npm test
 ```
+
 ## Analyse et formatage de code
 
 Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le formatage. Cela permet de garantir que le code respecte des normes de qualité et de style cohérentes.
@@ -143,7 +149,9 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 ```bash
 npm run lint:fix
 ```
-- Prettier 
+
+- Prettier
+
 ```bash
 npm run format
 ```
@@ -173,6 +181,7 @@ npm run format
 ```bash
   docker-compose up -d
 ```
+
 ## Auteurs
 
 - **[Fatimata Aliou Sall](https://github.com/fatimata-sall)** - Développeuse Full Stack
