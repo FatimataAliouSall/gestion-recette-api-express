@@ -1,4 +1,4 @@
-## gestion-recette-api-express
+## Gestion des recettes
 
 Ceci est l'API backend pour l'application de gestion de recettes, développée avec Express.js. Elle fournit une interface RESTful pour gérer les recettes, permettant de créer, lire, mettre à jour et supprimer des recettes dans une base de données. L'API est conçue pour être consommée par le frontend afin de gérer les opérations sur les recettes.
 
@@ -6,15 +6,11 @@ Ceci est l'API backend pour l'application de gestion de recettes, développée a
 
 - Node.js (version 18 ou supérieure)
 - MySQL (version 8 ou supérieure)
+- Postman (pour tester l'API)
 - Docker (version 20 ou supérieure)
 
-## Mise en place du projet
 
-## Prérequis
-
-- Node.js (version 18 ou supérieure)
-- MySQL (version 8 ou supérieure)
-- Docker (version 20 ou supérieure)
+## Installation
 
 Pour configurer le projet, suivez ces étapes :
 
@@ -51,35 +47,108 @@ L'API sera accessible à l'adresse http://localhost:3090
 
 ## Endpoints de l'API
 
-1. Créer une recette
 
-- Méthode : POST
-- Endpoint : /api/recipes
-- Description : Ajoute une nouvelle recette dans la base de données.
-
-2. Obtenir toutes les recettes
+1. Obtenir toutes les recettes
 
 - Méthode : GET
 - Endpoint : /api/recipes
 - Description : Récupère toutes les recettes de la base de données.
+- Réponse:
+```bash
+ {
+        "id": 1,
+        "title": "Salade ",
+        "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
+        "type": "entrée",
+        "description": "Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique."
+  
+  }
+```
 
-3. Obtenir une recette par ID
+2. Créer une recette
 
-- Méthode : GET
-- Endpoint : /api/recipes/:id
-- Description : Récupère une recette par son ID.
+- Méthode : POST
+- Endpoint : /api/recipes
+- Description : Ajoute une nouvelle recette dans la base de données.
+- Corps de la requette :
+```bash  
+  {
+   "title": "Salade  datte",
+  "ingredient": "Lait, Poulet, Parmesan, Croutons, Sucre",
+  "type": "dessert",
+  "description": "Une salade populaire à base de poulet, parmesan, et sauce crémeuse."
+       
+}
+```
 
-4. Mettre à jour une recette
+- Réponse :
+```bash 
+{
+    "message": "Recette créée avec succès"
+}
+
+``` 
+
+
+
+3. Mettre à jour une recette
 
 - Méthode : PUT
 - Endpoint : /api/recipes/edit/:id
 - Description : Met à jour une recette par son ID.
+- Corps :
+```bash
+{
+       
+        "title": "Salade ",
+        "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
+        "type": "entrée",
+        "description": "Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique."
+ }
+
+```
+- Répose :
+```bash
+{
+    "message": "Recette mise à jour avec succès"
+}
+```
+
 
 5. Supprimer une recette.
 
 - Méthode : DELETE
 - Endpoint : /api/recipes/delete/:id
 - Description : Supprime une recette par son ID.
+-Réponse :
+```bash
+{
+    "message": "Recette supprimée avec succès"
+}
+
+```
+
+## Tests
+
+Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la commande :
+
+```bash
+  npm test
+```
+## Linting et Formatage
+
+Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le formatage. Cela permet de garantir que le code respecte des normes de qualité et de style cohérentes.
+
+- Eslint
+
+```bash
+npm run lint:fix
+```
+- Prettier 
+```bash
+npm run format
+```
+
 
 ## Conteneurisation et déploiement.
 
@@ -107,17 +176,6 @@ L'API sera accessible à l'adresse http://localhost:3090
   docker-compose up -d
 ```
 
-## Tests
-
-Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la commande :
-
-```bash
-  npm test
-```
-
-## Configuration de la base de données
-
-La connexion à la base de données est configurée manuellement sans utiliser d'ORM. Pour configurer la base de données, créez une base MySQL nommée gestion_recettes, puis modifiez les informations de connexion tellesques DB_HOST, DB_USER, DB_PASS, DB_NAME dans le fichier ./env .
 
 ## Auteurs
 
