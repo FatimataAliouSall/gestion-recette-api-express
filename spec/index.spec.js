@@ -45,6 +45,7 @@ describe('Recipe tests', () => {
     const updatedRecipe = await Recipe.getById(recipeId);
     expect(updatedRecipe.title).toBe(updatedData.title);
     expect(updatedRecipe.description).toBe(updatedData.description);
+    expect(updatedRecipe.ingredient).toBe(updatedData.ingredient);
   });
 
   it('cannot create recipe with invalid data', async () => {
@@ -69,7 +70,6 @@ describe('Recipe tests', () => {
     
   });
   
-
   it('can delete a recipe', async () => {
 
     const result = await Recipe.delete(recipeId);

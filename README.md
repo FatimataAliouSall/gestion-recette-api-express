@@ -100,7 +100,6 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Corps :
 ```bash
 {
-       
         "title": "Salade ",
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
         "type": "entrée",
