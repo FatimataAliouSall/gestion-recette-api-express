@@ -70,7 +70,7 @@ L'API sera accessible à l'adresse http://localhost:3090
 2. Créer une recette
 
 - Méthode : POST
-- Endpoint : /api/recipes
+- Endpoint : /api/recipes/add
 - Description : Ajoute une nouvelle recette dans la base de données.
 - Corps de la requette :
 
