@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "7e54f19a-c1db-4059-829c-31c5dc85ceb0",
+		"name": "gestion-recettes-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38098585"
+	},
+	"item": [
+		{
+			"name": "api/recipes/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3090/api/recipes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3090",
+					"path": [
+						"api",
+						"recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/recipes/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Salade Fruit\",\r\n  \"ingredients\": \"Lait, Poulet, Parmesan, Croutons, Sucre\",\r\n  \"type\": \"dessert\",\r\n  \"description\": \"Une salade populaire à base de poulet, parmesan, et sauce crémeuse.\"\r\n       \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3090/api/recipes/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/recipes/delete/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3090/api/recipes/delete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3090",
+					"path": [
+						"api",
+						"recipes",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/recipes/edit/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n       \r\n        \"title\": \"Salade \",\r\n        \"ingredient\": \"Laitue, Poulet, Parmesan, Croutons, Sauce César\",\r\n        \"type\": \"entrée\",\r\n        \"description\": \"Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique.\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3090/api/recipes/edit/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3090",
+					"path": [
+						"api",
+						"recipes",
+						"edit",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
