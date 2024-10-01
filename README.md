@@ -9,7 +9,6 @@ Ceci est l'API backend pour l'application de gestion de recettes, développée a
 - Postman (pour tester l'API)
 - Docker (version 20 ou supérieure)
 
-
 ## Installation
 
 Pour configurer le projet, suivez ces étapes :
@@ -33,20 +32,22 @@ Pour configurer le projet, suivez ces étapes :
   npm start
 ```
 
-4. Créez un fichier .env à la racine du projet et configurez les variables d'environnement pour la connexion à la base de données :
+4. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données et docker compose :
 
 ```bash
     DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=your-password
-    DB_NAME=recipes_management
-    PORT=3000
+    DB_USER=
+    DB_PASSWORD=
+    DB_NAME=recipes_management_old
+    PORT=3090
+    DB_PORT=3306
+    MYSQL_DATABASE=recipes_management_old
+    MYSQL_ROOT_PASSWORD=
 ```
 
 L'API sera accessible à l'adresse http://localhost:3090
 
 ## Endpoints de l'API
-
 
 1. Obtenir toutes les recettes
 
@@ -54,6 +55,7 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /api/recipes
 - Description : Récupère toutes les recettes de la base de données.
 - Réponse:
+
 ```bash
  {
         "id": 1,
@@ -61,7 +63,7 @@ L'API sera accessible à l'adresse http://localhost:3090
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
         "type": "entrée",
         "description": "Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique."
-  
+
   }
 ```
 
@@ -71,25 +73,25 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /api/recipes
 - Description : Ajoute une nouvelle recette dans la base de données.
 - Corps de la requette :
-```bash  
+
+```bash
   {
    "title": "Salade  datte",
   "ingredient": "Lait, Poulet, Parmesan, Croutons, Sucre",
   "type": "dessert",
   "description": "Une salade populaire à base de poulet, parmesan, et sauce crémeuse."
-       
+
 }
 ```
 
 - Réponse :
-```bash 
+
+```bash
 {
     "message": "Recette créée avec succès"
 }
 
-``` 
-
-
+```
 
 3. Mettre à jour une recette
 
@@ -97,9 +99,9 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /api/recipes/edit/:id
 - Description : Met à jour une recette par son ID.
 - Corps :
+
 ```bash
 {
-       
         "title": "Salade ",
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
         "type": "entrée",
@@ -107,20 +109,22 @@ L'API sera accessible à l'adresse http://localhost:3090
  }
 
 ```
-- Répose :
+
+- Réponse :
+
 ```bash
 {
     "message": "Recette mise à jour avec succès"
 }
 ```
 
-
 5. Supprimer une recette.
 
 - Méthode : DELETE
 - Endpoint : /api/recipes/delete/:id
 - Description : Supprime une recette par son ID.
--Réponse :
+  -Réponse :
+
 ```bash
 {
     "message": "Recette supprimée avec succès"
@@ -135,7 +139,8 @@ Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la c
 ```bash
   npm test
 ```
-## Linting et Formatage
+
+## Analyse et formatage de code
 
 Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le formatage. Cela permet de garantir que le code respecte des normes de qualité et de style cohérentes.
 
@@ -144,11 +149,12 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 ```bash
 npm run lint:fix
 ```
-- Prettier 
+
+- Prettier
+
 ```bash
 npm run format
 ```
-
 
 ## Conteneurisation et déploiement.
 
@@ -175,7 +181,6 @@ npm run format
 ```bash
   docker-compose up -d
 ```
-
 
 ## Auteurs
 
